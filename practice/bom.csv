@@ -1,0 +1,35 @@
+Manufacturer,Part Number,RefDes,Quantity,Description,Pattern,Number of Pins,Value
+Samsung Electro-Mechanics,CL10A106MA8NRNC,"C1, C2",2,"10uF, 20%,X5R,25V",0603 CAP,2,10uF
+Yageo,CC0603KRX7R9BB104,"C3, C5, C6, C7, C8, C15",6,"100nF,10%,X7R,50V",0603 CAP,2,0.1uF 50V
+Dongguan Chengxing Elec,LCSC - C45100,C4,1,"47uF ±20% 50V Radial,6.3x7mm",CAP100,2,47uF
+Yageo,CS0603KRX7R9BB332,C9,1,CAP CER 50V 20% 0603,0603 CAP,2,3.3nF
+Samsung Electro-Mechanics,CL10A226MP8NUNE,"C10, C12",2,22uF 10V 0603,0603 CAP,2,22uF
+Yageo,CC0603KRX7R9BB473,"C11, C13, C14",3,47nF 50V 0603,0603 CAP,2,47nF
+Rohm Semiconductor,RB168MM100TR,D1,1,"100V,1A,PMDU",SOD-123,2,
+Bridgelux,BXEN-27E-13H-9B-00-0-0,D2,1,"2835 White, Warm 2700K 9.2V 100mA",BXEN-27E-13H-9B-00-0-0,2,
+Lite-On Inc,LTR-4206,D3,1,Phototransistor 940nm Top View T-1,LEDT1,2,
+Diodes Incorporated,1N4148WS-7-F,D4,1,"75V,150mA,SOD-323",SOD-323,2,
+TE Connectivity,1744439-4,J1,1,"1x4p, 2.5mm pitch",1744439-4,4,
+JST,B5B-ZR(LF)(SN),J2,1,"1*5 Pins,Pitches 1.50mm,180°",B5B-ZR(LF)(SN),5,
+Taiyo Yuden,LB3218T681K,L1,1,1207 680uH 22.1Ohms +/-10%Tol 45mA,IND_1210,2,
+On Semiconductor,BC846ALT1G,Q1,1,100mA 65V NPN,SOT23,3,
+Nexperia,PMV55ENEAR,Q2,1,"N-CH,60V,3.1A,TO-236AB",SOT23,3,
+On Semiconductor,2N7002LT1G,Q3,1,"N-CH,60V,115mA,SOT-23-3",SOT23,3,
+Yageo,0603R*,"R1, R5, R16, R18, R19",5,,0603 RES,2,10k
+Yageo,0603R*,R2,1,,0603 RES,2,51k
+Yageo,0603R*,R3,1,,0603 RES,2,220k
+Yageo,0603R*,"R4, R8",2,,0603 RES,2,130k
+Yageo,0603R*,"R6, R17",2,,0603 RES,2,100R
+Yageo,0603R*,R7,1,,0603 RES,2,1K
+Yageo,0603R*,R9,1,,0603 RES,2,56k
+Yageo,0603R*,"R10, R12",2,,0603 RES,2,13k
+Yageo,0603R*,"R11, R13, R14, R15",4,,0603 RES,2,680k
+Yageo,Push Rotary PIR,S1,1,,Push Rotary PIR,4,
+Korean Hroparts Elec,K2-1102DP-M4SW-04,SW1,1,6x6x10mm tactile switch,6mm button,2,
+STMicroelectronics,STM32L011F4P6,U1,1,,TSSOP-20,20,
+Silicon Labs,Si7006-A20-IM,U2,1,"Temp/Humidity Sensor, 3x3 DFN",DFN-6/3x3x1/EXT,6,
+On Semiconductor,TLV431BSN1T1G,U3,1,Voltage Reference +/-0.5% SOT23-3,SOT23,3,
+Selba Sensing Tech,D203B,U4,1,"PIR Sensor, TH",D203B,3,
+Microchip,MCP6002-I/SN,U5,1,,SOIC-8/150mil,6,
+Diodes Incorporated,SMAJ58A-13-F,Z1,1,"58V,400W,SMA",DO-214AC,2,
+,,,52,,,104,
