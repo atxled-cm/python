@@ -6,28 +6,56 @@ import example_data
 import json
 from re import sub
 from decimal import Decimal
+import mouser
 
 
 
-response = json.loads(example_data.data)
-#stuff = response.json()
+def find_price(_quantity, _part_number):
+	parts = mouser.get_web_parts(_part_number)
+	i = 0
+	x = parts['PriceBreaks']
+	while i < 4:
+		if x[i]['Quantity'] < _quantity and x[i+1]['Quantity'] > _quantity:
+		#print(i)
+		#print(x[i]['Quantity'])
+		#print(x[i]['Price'])
+			quantity_tier = x[i]['Quantity']
+			price_at_quantity = x[i]['Price'].strip('$')
+			extended_price = float(price_at_quantity) * _quantity
+			output_info = {'Quantity': _quantity, 'Tier:': quantity_tier, 'Price': price_at_quantity, 'Extended Price': extended_price}
+			#return [_quantity, quantity_tier, price_at_quantity, extended_price]
+			return output_info
+			#print(price_at_quantity_results)
+		i += 1
 
-parts = response['SearchResults']['Parts'][0]
 
+
+#response = json.loads(example_data.data)
+#parts = response['SearchResults']['Parts'][0]
 #print(response['SearchResults']['Parts'][0]['Availability'])
 
-qty = 14
+#parts = mouser.getParts()
+#parts = mouser.getWebParts("RC0603FR-07200KL")
+#parts = mouser.getExampleParts()
+#parts = mouser.getWebParts("1N4148WS-7-F")
+product_info = find_price(150, "PMV55ENEAR")
+print('Price: ' + str(product_info['Price']))
+print('Extended Price: ' + str(product_info['Extended Price']))
+#print("Price: " + product_info['Price'])
+#print(findPrice(150, "PMV55ENEAR"))
 
-#print(parts['PriceBreaks'][2]['Price'])
-
-i = 0
-x = parts['PriceBreaks']
-while i < 4:
-	if x[i]['Quantity'] < qty and x[i+1]['Quantity'] > qty:
-		print(i)
-		print(x[i]['Quantity'])
-		print(x[i]['Price'])
-	i += 1
+# qty = 14
+# #print(parts['PriceBreaks'][2]['Price'])
+# i = 0
+# x = parts['PriceBreaks']
+# while i < 4:
+# 	if x[i]['Quantity'] < qty and x[i+1]['Quantity'] > qty:
+# 		#print(i)
+# 		#print(x[i]['Quantity'])
+# 		#print(x[i]['Price'])
+# 		price_at_quantity_results = [i, x[i]['Quantity'], x[i]['Price']]
+# 		print(price_at_quantity_results)
+# 	i += 1
 
 
 
@@ -72,7 +100,7 @@ with open('bom.csv', 'r') as csv_file:
 				if ready_to_print == 1:
 					qty = Decimal(sub(r'[^\d.]', '', line[quantity_index]))
 					extended_cost = price * qty
-					print(str(qty) + ': ' + this_part_number + ' = ' + '$' + "{:.3f}".format(extended_cost))
+					print(str(qty) + ' * ' + this_part_number + ' = ' + '$' + "{:.3f}".format(extended_cost))
 
 				i += 1
 
