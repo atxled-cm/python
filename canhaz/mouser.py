@@ -31,7 +31,7 @@ def get_web_parts(_part_number):
 				#print(response)
 				return response['SearchResults']['Parts'][0]
 			else:
-				print("problem!")
+				#print("not found at mouser \n")
 				#print(response)
 				return {'Error':'No Stuff Here'}
 	else:

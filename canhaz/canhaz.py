@@ -9,20 +9,19 @@ import time
 
 def find_price(_quantity, _part_number):
 
-    output_info = {'Quantity': 0, 'Tier:': 0, 'Price': 0, 'Extended Price': 0.00}
+    output_info = {'Quantity': 0, 'Tier:': 0, 'Price': 0, 'Extended Price': "{:.3f}".format(0)}
 
     parts = mouser.get_web_parts(_part_number)
     #parts = mouser.get_example_parts(_part_number)
     if 'Availability' in parts:
-        print('got availability')
+        #print('got availability')
         #print("yes!")
         i = 0
         x = parts['PriceBreaks']
         while i < 4:
-            if x[i]['Quantity'] < _quantity and x[i+1]['Quantity'] > _quantity:
-            #print(i)
-            #print(x[i]['Quantity'])
-            #print(x[i]['Price'])
+
+#yo this would break at 1000 or more
+            if x[i]['Quantity'] <= _quantity and x[i+1]['Quantity'] > _quantity:
                 quantity_tier = x[i]['Quantity']
                 price_at_quantity = float(x[i]['Price'].strip('$'))
                 extended_price = price_at_quantity * _quantity
@@ -31,17 +30,12 @@ def find_price(_quantity, _part_number):
                 #return output_info
                 #print(price_at_quantity_results)
             i += 1
-    else:
-        print("not available!")
-
-    print(parts)
-    print(output_info)
     return output_info
 
 
-product_info = find_price(150, "PMV55ENEAR")
-print('Price: ' + str(product_info['Price']))
-print('Extended Price: ' + str(product_info['Extended Price']))
+#product_info = find_price(150, "PMV55ENEAR")
+#print('Price: ' + str(product_info['Price']))
+#print('Extended Price: ' + str(product_info['Extended Price']))
 
 
 with open('bom.csv', 'r') as csv_file:
@@ -85,7 +79,7 @@ with open('bom.csv', 'r') as csv_file:
                 if ready_to_print == 1:
                     qty = Decimal(sub(r'[^\d.]', '', line[quantity_index]))
                     extended_cost = price * qty
-                    print(str(qty) + ' * ' + this_part_number + ' = ' + '$' + "{:.3f}".format(extended_cost))
+                    #print(str(qty) + ' * ' + this_part_number + ' = ' + '$' + "{:.3f}".format(extended_cost))
 
                 i += 1
 
@@ -106,7 +100,8 @@ with open('new_bom.csv', 'r') as csv_file:
         total_cost += float(product_info['Extended Price'])
         
         if 'Extended Price' in product_info:
-            output = '$' + str(product_info['Extended Price']) + ' -    ' + this_part
+            #output = '$' + str(product_info['Extended Price']) + ' - ' + this_part
+            output = 'qty: ' + str(int(product_info['Quantity'])) + "   " + '$' + str(product_info['Extended Price']) + "   " + this_part
             print(output)
         else:
             print(this_part)
